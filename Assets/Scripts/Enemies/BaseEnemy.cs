@@ -31,9 +31,12 @@ public class BaseEnemy : MonoBehaviour, IPointerClickHandler
     // Use this for initialization
     void Start()
     {
+        Physics2D.IgnoreLayerCollision(8, 8);
+        SpriteRenderer renderer = GetComponent<SpriteRenderer>();
+        float order = this.transform.position.y * -100;
+        renderer.sortingOrder = (int)order;
+
         _healthComponent = GetComponent<HealthComponent>();
-
-
 
         if (_healthComponent == null)
         {
